@@ -1,0 +1,3 @@
+[console_scripts]
+python-doc = python_doc.cli:cli
+
