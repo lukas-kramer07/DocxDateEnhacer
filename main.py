@@ -4,8 +4,8 @@ import datetime
 import locale
 
 # Path to the Word document
-document_path = r"E:/Protokoll 2023.docx"  # Path to your document
-changed_document_path = r"E:/Protokoll 2023_Wochentage3.docx"  # Path to the changed document
+document_path = r""  # Path to your document
+changed_document_path = r""  # Path to the changed document
 # Create a new document instance
 document = Document(document_path)
 
@@ -26,7 +26,7 @@ def enhance_date_with_weekday(text):
     matches = re.findall(pattern, text)
     for match in matches:
         date = match  # Remove the trailing colon
-        weekday_text = f"{date} ({weekday(date)}):"
+        weekday_text = f"{date} ({weekday(date)})"
         # Replace the date pattern with the formatted text
         text = text.replace(match, weekday_text)
     return text
