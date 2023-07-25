@@ -4,8 +4,8 @@ import datetime
 import locale
 
 # Path to the Word document
-document_path = r"E:\Protokoll 2023.docx"  # Path to your document
-changed_document_path = r"E:\test2.docx"  # Path to the changed document
+document_path = r""  # Path to your document
+changed_document_path = r"E:"  # Path to the changed document
 # Create a new document instance
 document = Document(document_path)
 
