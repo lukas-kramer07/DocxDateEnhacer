@@ -4,17 +4,18 @@ import datetime
 import locale
 
 # Path to the Word document
-document_path = r""  # Path to your document
-changed_document_path = r""  # Path to the changed document
+document_path = r"E:\Protokoll 2023.docx"  # Path to your document
+changed_document_path = r"E:\test2.docx"  # Path to the changed document
 # Create a new document instance
 document = Document(document_path)
 
-pattern = r"\d{2}\.\d{2}(?:\.\d{2})?"
-
+pattern = r"\d{2}\.\d{2}(?:\.\d{4})?"
 def weekday(datum):
-    day, month, *_ = map(int, datum.split('.'))
-    year = datetime.datetime.now().year  # uses the current year
-
+    day, month, *year = map(int, datum.split('.'))
+    if year:
+        year = year[0]
+    else:
+        year = datetime.datetime.now().year
     locale.setlocale(locale.LC_TIME, 'de_DE.UTF-8')
 
     # calculate weekday
@@ -25,10 +26,12 @@ def weekday(datum):
 def enhance_date_with_weekday(text):
     matches = re.findall(pattern, text)
     for match in matches:
-        date = match  # Remove the trailing colon
+        print(match)
+        date = match 
         weekday_text = f"{date} ({weekday(date)})"
         # Replace the date pattern with the formatted text
         text = text.replace(match, weekday_text)
+        print(F"text: {text}")
     return text
 
 def main():
